@@ -19,4 +19,16 @@ output application/json
 			</ee:message>
 		</ee:transform>
 	</flow>
+	<flow name="dataweave-user-defined-variables" doc:id="5b5957b0-333e-4793-9f67-c3dec5956b64" >
+		<ee:transform doc:name="Transform Message" doc:id="385acfb3-549b-4fad-abc4-fd2264649b00" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var firstName = "Ali"
+var lastName = "Sills"
+---
+firstName ++ " " ++ lastName]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
 </mule>
