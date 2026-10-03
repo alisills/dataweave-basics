@@ -4,7 +4,7 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<flow name="dataweave-selectorsFlow" doc:id="76dbc807-9774-410e-8c08-dd6706291c29" >
+	<flow name="dataweave-json-selectors-flow" doc:id="76dbc807-9774-410e-8c08-dd6706291c29" >
 		<ee:transform doc:name="Transform Message" doc:id="126a9c13-2728-4fef-afd8-84e2e74d7d10" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -15,6 +15,22 @@ output application/json
 	"multiValueSelector": payload.*source,
 	"indexSelector": payload[0],
 	"rangeSelector": payload[1 to 2]
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="dataweave-xml-selectors-flow" doc:id="900f8a84-e232-420a-947b-ac5514bd6470" >
+		<ee:transform doc:name="Transform Message" doc:id="41269768-c7bb-415a-b22e-6e5dc80f45e6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"singleValueSelector": payload.covidCases.*covidCase[0].source,
+	"xmlNamespaceSelector": payload.covidCases.*covidCase[0].source.@id,
+	"multiValueSelector": payload.covidCases.*covidCase.source,
+	"indexSelector": payload.covidCases.*covidCase[1],
+	"rangeSelector": payload.covidCases.*covidCase[1 to 2]
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
