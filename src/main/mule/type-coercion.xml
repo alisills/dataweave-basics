@@ -21,7 +21,12 @@ payload.dateOfBirth as Date {format: "yyyy-MM-dd"}]]></ee:set-payload>
 output application/java
 ---
 {
-}]]></ee:set-payload>
+"date-now": now() as Date,
+"date-time": now() as Time,
+"date-in-yyyy/MM/dd-format": now() as String {format: "MMMM"},
+"date-in-yyyy-MM-dd-format": now() as String {format: "yyyy-MM-dd"}
+}
+]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
