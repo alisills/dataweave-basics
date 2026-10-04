@@ -14,4 +14,15 @@ payload.dateOfBirth as Date {format: "yyyy-MM-dd"}]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
+	<flow name="now-function" doc:id="1918634d-cd5f-424a-97a2-6daf95d210b2" >
+		<ee:transform doc:name="Transform Message" doc:id="4605a9cb-f994-45ab-a2fc-9b0156ae0765" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
 </mule>
